@@ -1,6 +1,7 @@
 import logging
 from pprint import pprint
 import datetime
+import os
 
 
 def decorator(function_to_decorate):
@@ -11,8 +12,7 @@ def decorator(function_to_decorate):
         logging.basicConfig(
             level=logging.DEBUG,
             filename="mylog.log",
-            format=f"{current_datetime} -  %(levelname)s - {args, kwargs} - {function_name} - {result} "
-            )
+            format=f"{current_datetime} -  %(levelname)s - {args, kwargs} - {function_name} - {result} - {os.path.abspath('mylog.log')}")
 
         logging.info(a_wrapper_accepting_arguments)
         return function_to_decorate
