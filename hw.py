@@ -1,5 +1,6 @@
 from pprint import pprint
-from decor import decorator
+from decor import parametrized_decor
+import os
 
 def get_cook_book(file_name):
     cook_book = dict()
@@ -23,7 +24,7 @@ def get_cook_book(file_name):
 cook_book = get_cook_book('recipes.txt')
 
 
-@decorator
+@parametrized_decor(os.path.abspath('my_log.txt'))
 def get_shop_list_by_dishes(dishes, person_count, cook_book):
     menu = {}
     for dish in dishes:
@@ -43,6 +44,4 @@ def get_shop_list_by_dishes(dishes, person_count, cook_book):
     return menu
 
 
-
-
-# pprint(get_shop_list_by_dishes(['Омлет', 'Фахитос'], 4, cook_book))
+pprint(get_shop_list_by_dishes(['Омлет', 'Фахитос'], 4, cook_book))
